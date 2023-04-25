@@ -1,2 +1,9 @@
-.vscode/settings.json
 a.out
+.vscode/settings.json
+node.h.gch
+bin/io.o
+bin/rpn
+.gitignore
+bin/rpn_calc.o
+.gitignore
+.gitignore
