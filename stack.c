@@ -55,3 +55,27 @@ float pop(node **st)
     free(ptr);
     return output; 
 }
+
+int check_depth(node *st, int depth)
+/*
+Checks whether the stack reaches a certain depth or not
+return 0-> not deep enough
+return 1 -> reaches depth
+Depth=0 -> Empty stack
+Depth=1 -> One element
+Depth=2 -> Two elements 
+... So on ...
+*/
+{
+    int i=0;
+    if ( st == NULL ) return 0;
+    i=1;
+
+    while (st->next !=NULL && i<depth)
+    {
+        i++;
+        st=st->next;
+    }
+    if(i<depth) return 0;
+    else return 1;
+}
