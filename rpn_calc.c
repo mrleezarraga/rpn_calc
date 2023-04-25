@@ -2,18 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct node
-{
-    float val;
-    struct node *next;
-}
-node;
+#include "node.h"
+#include "stack.h"
 
 // Function prototype
-int push(node **n,float x);
 int print_stack(node *st,int number_of_rows);
-int read_full_stack(node *st);
-float pop(node **st);
 
 //End function prototypes
 
@@ -27,11 +20,12 @@ int main (void)
     
     {
     
+        system("clear");
         print_stack(stack,4);
             
                
         scanf("%s",input);
-        system("clear");
+
         if (strcmp(input,"pop")==0)
 
         {
@@ -82,7 +76,7 @@ int main (void)
             {
                 if (stack->next!=NULL)
                 {
-                    push(&stack,1.0/pop(&stack)/pop(&stack));
+                    push(&stack,1.0/(pop(&stack)/pop(&stack)));
                 }else printf("Popeas demasiado\n");
 
             }else printf("Popeas demasiado\n");
@@ -139,54 +133,4 @@ int print_stack(node *st,int number_or_rows)
     }
     printf(">?");
     return 0;
-}
-
-int push( node **n,float x)
-{
-    //printf("En push\n");
-    node *ptr = malloc(sizeof(node));
-    if (*n==NULL)
-    {
-        ptr->val=x;
-        ptr->next=NULL;
-        *n=ptr;
-    }
-    else
-    {
-        ptr->val=x;
-        ptr->next=*n;
-        *n=ptr;
-    }
-    
-}
-int read_full_stack(node *st)
-
-{
-    
-    if (st==NULL)
-    {
-        return 0;
-    } 
-    
-    if (st->next==NULL)
-    {
-        return 0;
-    }
-    else 
-    {
-         printf("valor: %f\n",st->val);
-
-        read_full_stack(st->next);
-    }
-}
-float pop(node **st)
-{
-    node *ptr;
-    float output;
-    
-    ptr = *st;
-    *st = ptr->next;
-    output=ptr->val;
-    free(ptr);
-    return output; 
 }
